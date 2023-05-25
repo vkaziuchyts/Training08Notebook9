@@ -1,20 +1,26 @@
 package lt.lhu.training08.input.command.impl;
 
-import lt.lhu.training08.input.Display;
-
-import lt.lhu.training08.input.MenuBuilder;
+import lt.lhu.training08.controller.Controller;
 import lt.lhu.training08.input.command.Command;
-import lt.lhu.training08.logic.NotebookLogic;
 
 public class ConsoleShowAllNotes implements Command {
-
-	private NotebookLogic logic = new NotebookLogic();
-	private Display display = MenuBuilder.getInstance().getDisplay();
+	private Controller controller = Controller.getInstance();
 
 	@Override
 	public void execute() {
+		System.out.println("show all notes");
 
-		display.printNotes(logic.allNotes());
+		String request = "SHOW_ALL_NOTES";
+
+		// ----------------------------------------------
+
+		String response;
+
+		response = controller.doAction(request);
+
+		// ----------------------------------------------------------
+
+		System.out.println(response);
 
 	}
 

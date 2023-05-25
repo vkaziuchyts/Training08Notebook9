@@ -2,14 +2,16 @@ package lt.lhu.training08.input;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import lt.lhu.training08.entity.Note;
 
 public class Display {
 
-	public void printMenu(ConcreteMenu menu) {
+	public void printMenu(ConcreteMenu m) {
 
-		for (Map.Entry<Integer, String> item : menu.getItems()) {
+		Set<Map.Entry<Integer, String>> items = m.getItems();
+		for (Map.Entry<Integer, String> item : items) {
 			System.out.println(item.getKey() + " " + item.getValue());
 		}
 	}

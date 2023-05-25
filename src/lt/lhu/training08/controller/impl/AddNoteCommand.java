@@ -22,7 +22,6 @@ public class AddNoteCommand implements Command {
 			logic.add(title, content);
 			response = "Your note wad added in notebook.";
 		} catch (LogicException e) {
-			// log
 			response = "Error!!!";
 		}
 		
