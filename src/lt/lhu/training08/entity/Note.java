@@ -1,5 +1,6 @@
 package lt.lhu.training08.entity;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import java.util.Objects;
@@ -24,14 +25,14 @@ public class Note {
 	}
 
 	public Note(String title, String content, Date d) {
-		this.id = GenerateId.nextId();
+		this.id = GenerateId.getInstance().nextId();
 		this.title = title;
 		this.content = content;
 		this.d = d;
 	}
 
 	public Note(String title, String content) {
-		this.id = GenerateId.nextId();
+		this.id = GenerateId.getInstance().nextId();
 		this.title = title;
 		this.content = content;
 		this.d = new Date();
@@ -89,20 +90,33 @@ public class Note {
 
 	@Override
 	public String toString() {
-		return "Note [id=" + id + ", title=" + title + ", content=" + content + ", d=" + d + "]";
+		SimpleDateFormat format = new SimpleDateFormat();
+		format.applyPattern("dd.MM.yyyy");
+		return "Note [id=" + id + ", title=" + title + ", content=" + content + ", d=" + format.format(d) + "]";
 	}
 
-	public static Note fromString(String line) {
-		String[] parts = line.split("\\s+");
+	public String serializeToString() {
+		return "Note id=" + id + " title=" + title + " content=" + content + " d=" + d.getTime();
+	}
 
-	    // Создать новый объект типа "Note"
-	    Note note = new Note();
+	public static Note deserializeFromString(String line) {
+		String[] params = line.split("\\s+");
 
-	    // Присвоить значения разделенных частей объекту "Note"
-	    note.setTitle(parts[0]);
-	    note.setContent(parts[1]);
+		String id = params[1].split("=")[1];
+		String title = params[2].split("=")[1];
+		String content = params[3].split("=")[1];
+		String date = params[4].split("=")[1];
 
-	    // Вернуть объект "Note"
-	    return note;
+		// Создать новый объект типа "Note"
+		Note note = new Note();
+
+		// Присвоить значения разделенных частей объекту "Note"
+		note.setId(Integer.parseInt(id));
+		note.setTitle(title);
+		note.setContent(content);
+		note.setD(new Date(Long.parseLong(date)));
+
+		// Вернуть объект "Note"
+		return note;
 	}
 }

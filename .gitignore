@@ -20,6 +20,7 @@ local.properties
 .classpath
 .settings/
 .loadpath
+my_notes.txt
 
 # External tool builders
 .externalToolBuilders/

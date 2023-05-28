@@ -21,7 +21,7 @@ public class FileNoteBookDao implements NoteBookDao {
 
 		try {
 			writer = new FileWriter("my_notes.txt", true);
-			writer.write(n.toString());
+			writer.write(n.serializeToString());
 			writer.write(System.lineSeparator());
 		} catch (IOException e) {
 			throw new DaoException("Failed to save note.", e);
@@ -48,8 +48,9 @@ public class FileNoteBookDao implements NoteBookDao {
 			String line;
 
 			while ((line = reader.readLine()) != null) {
-				Note note = Note.fromString(line); // Предполагается, что у вас есть метод fromString() для создания
-													// объекта Note из строки
+				Note note = Note.deserializeFromString(line); 
+												
+													
 				notes.add(note);
 			}
 		} catch (IOException e) {
