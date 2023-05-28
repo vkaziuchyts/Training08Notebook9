@@ -8,7 +8,7 @@ public class Controller {
 	
 	public String doAction(String request) {
 		
-		String[] params = request.split("\\s+", 2);//"ADD_NOTE title='ttt' content='kkk'"
+		String[] params = request.split("\\s(?=(([^\']*\'){2})*[^\']*$)\\s*");//"ADD_NOTE title='ttt' content='kkk'"
 		String commandName = params[0];
 		
 		Command command = provider.getCommand(commandName);

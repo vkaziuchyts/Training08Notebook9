@@ -57,7 +57,8 @@ public class NotebookLogicImpl implements NoteBookLogic {
 	}
 
 	private boolean isTextInNote(Note n, String text) {
-		return n.getTitle().contains(text) || n.getContent().contains(text);
+		String pureText = text.replaceAll("\'","");
+		return n.getTitle().replaceAll("\'","").contains(pureText) || n.getContent().replaceAll("\'","").contains(pureText);
 	}
 
 	public List<Note> find(Date date) throws LogicException {

@@ -11,7 +11,7 @@ public class AddNoteCommand implements Command {
 	
 	@Override
 	public String execute(String request) {
-		String[] params = request.split("\\s+");
+		String[] params = request.split("\\s(?=(([^\']*\'){2})*[^\']*$)\\s*");
 		
 		String title = params[1].split("=")[1];
 		String content = params[2].split("=")[1];

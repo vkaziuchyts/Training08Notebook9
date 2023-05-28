@@ -15,7 +15,7 @@ public class FindByContentCommand implements Command {
 
 	@Override
 	public String execute(String request) {
-		String[] params = request.split("\\s+");// "FIND_BY_CONTENT content='" + content
+		String[] params = request.split("\\s(?=(([^\']*\'){2})*[^\']*$)\\s*");// "FIND_BY_CONTENT content='" + content
 
 		String content = params[1].split("=")[1];
 

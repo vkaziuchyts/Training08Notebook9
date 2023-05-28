@@ -16,7 +16,7 @@ public class ConsoleFindItemByContent implements Command {
 
 		System.out.print("Enter content > ");
 		content = sc.nextLine();
-		String request = "FIND_BY_CONTENT content='" + content;
+		String request = "FIND_BY_CONTENT content='" + content + "'";
 
 		// ----------------------------------------------
 

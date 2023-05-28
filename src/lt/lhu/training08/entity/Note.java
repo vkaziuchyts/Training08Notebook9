@@ -100,7 +100,7 @@ public class Note {
 	}
 
 	public static Note deserializeFromString(String line) {
-		String[] params = line.split("\\s+");
+		String[] params = line.split("\\s(?=(([^\']*\'){2})*[^\']*$)\\s*");
 
 		String id = params[1].split("=")[1];
 		String title = params[2].split("=")[1];
