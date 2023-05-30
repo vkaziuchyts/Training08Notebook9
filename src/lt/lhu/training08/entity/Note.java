@@ -107,16 +107,13 @@ public class Note {
 		String content = params[3].split("=")[1];
 		String date = params[4].split("=")[1];
 
-		// Создать новый объект типа "Note"
 		Note note = new Note();
 
-		// Присвоить значения разделенных частей объекту "Note"
 		note.setId(Integer.parseInt(id));
 		note.setTitle(title);
 		note.setContent(content);
 		note.setD(new Date(Long.parseLong(date)));
 
-		// Вернуть объект "Note"
 		return note;
 	}
 }

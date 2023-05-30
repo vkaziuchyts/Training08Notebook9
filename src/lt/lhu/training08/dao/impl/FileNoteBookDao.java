@@ -48,9 +48,8 @@ public class FileNoteBookDao implements NoteBookDao {
 			String line;
 
 			while ((line = reader.readLine()) != null) {
-				Note note = Note.deserializeFromString(line); 
-												
-													
+				Note note = Note.deserializeFromString(line);
+
 				notes.add(note);
 			}
 		} catch (IOException e) {

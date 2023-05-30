@@ -5,7 +5,8 @@ import java.util.List;
 import lt.lhu.training08.entity.Note;
 
 public class NotebookOutput {
-	private NotebookOutput() {}
+	private NotebookOutput() {
+	}
 
 	public static final String convertNotesToString(List<Note> notes) {
 		if (notes == null || notes.size() <= 0) {

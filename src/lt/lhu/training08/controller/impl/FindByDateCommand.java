@@ -17,9 +17,9 @@ public class FindByDateCommand implements Command {
 
 	@Override
 	public String execute(String request) {
-		String[] params = request.split("\\s(?=(([^\']*\'){2})*[^\']*$)\\s*");// "FIND_BY_DATE date=29.04.2023"
+		String[] params = request.split("\\s(?=(([^\']*\'){2})*[^\']*$)\\s*");
 
-		String dateString = params[1].split("=")[1];// 29.04.2023
+		String dateString = params[1].split("=")[1];
 
 		SimpleDateFormat format = new SimpleDateFormat();
 		format.applyPattern("dd.MM.yyyy");
